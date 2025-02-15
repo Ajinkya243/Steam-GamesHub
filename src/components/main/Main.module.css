@@ -1,0 +1,23 @@
+.img {
+    max-height: 500px;
+    width: 100vw;
+  }
+  .text{
+    color: #C5C3C0;
+    background-color: #2e3136;
+}
+
+.main{
+    position: relative;
+   
+}
+.card{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+}
+.body{
+    background-color: #2e3136;
+}

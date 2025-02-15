@@ -3,12 +3,29 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import {QueryClient,QueryClientProvider} from '@tanstack/react-query';
+import PublisherGrid from './components/publisher/PublisherGrid';
+
+const queryClient=new QueryClient({
+  defaultOptions:{
+    quries:{
+      staleTime:Infinity,
+      cacheTime:Infinity
+    }
+  }
+})
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <BrowserRouter>
+  <QueryClientProvider client={queryClient}>
+  <Routes>
+    <Route path="/" element={<App/>} />
+    <Route path="/steam/publisher/:publisher" element={<PublisherGrid/>}/>
+  </Routes>
+  </QueryClientProvider>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

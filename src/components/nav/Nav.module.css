@@ -1,0 +1,23 @@
+.text{
+    color: #C5C3C0;
+}
+
+.search{
+    max-width: 30%;
+}
+
+@media (max-width:992px) {
+    .search{
+        max-width: 100%;
+    }
+}
+
+.header{
+    background-color: #2e3136;
+}
+.item:hover{
+    color: rgb(0, 242, 255);
+}
+.navbar-toggler-icon {
+    background-color: white; /* Or any color */
+  }
