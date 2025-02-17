@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import {QueryClient,QueryClientProvider} from '@tanstack/react-query';
 import PublisherGrid from './components/publisher/PublisherGrid';
+import ProductDetails from './pages/ProductDetails/ProductDetails';
+import Store from './pages/Store/Store';
 
 const queryClient=new QueryClient({
   defaultOptions:{
@@ -23,6 +25,8 @@ root.render(
   <Routes>
     <Route path="/" element={<App/>} />
     <Route path="/steam/publisher/:publisher" element={<PublisherGrid/>}/>
+    <Route path="/steam/product/:id" element={<ProductDetails/>} />
+    <Route path='/steam/store' element={<Store/>}/>
   </Routes>
   </QueryClientProvider>
   </BrowserRouter>
