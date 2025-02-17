@@ -1,0 +1,58 @@
+.card{
+    background-color:#3A3A3A ;
+}
+.title {
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+.img{
+    border-radius: 100%;
+    max-width: 70px;
+}
+.text{
+    color: rgb(255, 215, 0); /* Gold */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.reviews{
+    color: aqua;
+}
+.tags > p>span{
+    color: aqua;
+}
+.tags>p{
+    color:  rgb(255, 215, 0);
+    line-height: 5px;
+}
+.user-tags{
+    display: inline;
+    padding: 5px;
+    color: cyan;
+    background-color:  rgb(198, 97, 87);
+    border-radius: 15px;
+}
+.screenshot{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+.image-container{
+    position: relative;
+}
+.image-gallery{
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.image{
+   max-width: 10%; 
+   cursor: pointer;
+}
+.image:hover{
+    border: 3px solid rgb(255, 0, 0);
+    
+}
