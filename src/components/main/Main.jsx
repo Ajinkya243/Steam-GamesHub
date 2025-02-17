@@ -13,7 +13,7 @@ const Main=()=>{
                     <div className={`${classes.text} card-body `}>
                         <h3 className='card-title'>Welcome to Steam</h3>
                         <p className='card-text'>Step Into the World of Games</p>
-                        <Link className='btn btn-primary'>Explore Now &rarr; </Link>
+                        <Link to={"/steam/store"} className='btn btn-primary'>Explore Now &rarr; </Link>
                     </div>
                 </div>
                 

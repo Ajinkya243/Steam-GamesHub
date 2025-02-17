@@ -21,7 +21,7 @@ const Nav=()=>{
             <div className='collapse navbar-collapse' id="navbarNav">
             <ul className="navbar-nav ms-auto">
         <li className="nav-item">
-          <Link className={`${classes.text} ${classes.item} nav-link`}>Store</Link>
+          <Link to="/steam/store" className={`${classes.text} ${classes.item} nav-link`}>Store</Link>
         </li>
         <li className="nav-item">
           <Link className={`${classes.text} ${classes.item} nav-link`} >Login</Link>
