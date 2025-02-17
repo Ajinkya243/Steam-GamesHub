@@ -15,7 +15,7 @@ const ProductDetails=()=>{
     })
     return(
         <div className="bg-secondary">
-        <Nav/>
+        <Nav key={data?._id}/>
         {isLoading && (
             <div className="text-center">
                 <ClipLoader/>
@@ -30,7 +30,7 @@ const ProductDetails=()=>{
             <p className={`${classes.text} display-5`}>{data.name}</p>
                 <div className="col col-md-7">
                 
-                {data.videoUrl ? (<video autoPlay  muted loop playsInline controls width="100%">
+                {data.videoUrl ? (<video autoPlay  muted loop playsInline controls width="100%" key={data._id}>
           <source
             src={data.videoUrl}
             type="video/mp4"

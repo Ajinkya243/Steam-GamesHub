@@ -21,3 +21,13 @@
 .navbar-toggler-icon {
     background-color: white; /* Or any color */
   }
+
+  .parent-container{
+    position: relative;
+  }
+  .child-container{
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    z-index: 999;
+  }
