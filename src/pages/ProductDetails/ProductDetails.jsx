@@ -4,18 +4,40 @@ import useFetchProduct from "../../hooks/productDetails/useFetchProduct";
 import { useQuery } from "@tanstack/react-query";
 import { ClipLoader } from 'react-spinners';
 import classes from './ProductDetails.module.css';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { LiaRupeeSignSolid } from "react-icons/lia";
+import { Link } from "react-router-dom";
+import { toast } from 'react-toastify';
 
-const ProductDetails=()=>{
+const ProductDetails=({cartQuantity,setCartQuantity,cart,setCart,wishlistCount,setWishlistCount,wishlist,setWishlist})=>{
     const[url,setUrl]=useState();
+    const[inCart,setInCart]=useState(false);
+    const[inWishlist,setInWishlist]=useState(false);
     const{id}=useParams();
     const{data,isLoading,error}=useQuery({
         queryKey:['game',id],
         queryFn:useFetchProduct
     })
+    const handleCart=(id)=>{
+        setCartQuantity(prev=>prev+1);
+        toast.success("Game added to Cart");
+        setCart(prev=>[...prev,data]);
+    }
+    const handleWishList=()=>{
+        setWishlistCount(prev=>prev+1);
+        toast.success("Game added to wishlist")
+        setWishlist(prev=>[...prev,data]);
+    }
+   useEffect(()=>{
+    const inCart=cart.some(el=>el._id===id);
+    const inWishlist=wishlist.some(el=>el._id===id);
+    setInCart(inCart);
+    setInWishlist(inWishlist);
+   },[id,cart,wishlist]);
+   console.log(cart);
     return(
         <div className="bg-secondary">
-        <Nav key={data?._id}/>
+        <Nav key={data?._id} cartQuantity={cartQuantity} wishlistCount={wishlistCount}/>
         {isLoading && (
             <div className="text-center">
                 <ClipLoader/>
@@ -60,9 +82,19 @@ const ProductDetails=()=>{
                 </div>
             </div>
             <br />
+            <div className={classes['buy-card']}>
+                <p className="display-5">Buy {data.name}</p>
+                <div className={classes['price-tag']}>
+                    <span className="bg-dark p-2"><LiaRupeeSignSolid/>{data.price?data.price:'Free to play'}</span>
+                    {inCart ?<Link className="btn btn-success">Go to Cart</Link>:<button className="btn btn-success" onClick={()=>handleCart()}>Add to Cart</button>}
+                    {inWishlist ?<Link className="btn btn-success">Go to Wishlist</Link>:<button className="btn btn-success" onClick={handleWishList}>Add to Wishlist</button>}
+                    
+                    
+                </div>
+            </div>
             <br />
             <div className={classes['image-container']}>
-                <img className="" src={url?url:data.screenShots[0]} alt="" style={{maxWidth:'100%',maxHeight:"100%"}}/>
+                <img key={data._id} className="" src={url?url:data.screenShots[0]} alt="" style={{maxWidth:'100%',maxHeight:"100%"}}/>
                 <div className={classes['image-gallery']}>
             {data.screenShots.map(el=>(
                 <img className={classes.image} src={el} alt="pic" onClick={(event)=>setUrl(event.target.src)} />

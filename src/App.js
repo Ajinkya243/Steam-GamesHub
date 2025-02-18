@@ -2,11 +2,10 @@
 import './App.css';
 import Main from './components/main/Main';
 import Nav from './components/nav/Nav';
-
-function App() {
+function App({cartQuantity,wishlistCount}) {
   return (
     <>
-    <Nav/>
+    <Nav cartQuantity={cartQuantity} wishlistCount={wishlistCount}/>
     <Main/>
     </>
   );

@@ -3,14 +3,14 @@ import useFetchGames from '../../hooks/allGames/useFetchGames'
 import Nav from "../../components/nav/Nav";
 import { ClipLoader } from 'react-spinners';
 import Products from "../../components/productGrid/Products";
-const Store=()=>{
+const Store=({cartQuantity})=>{
     const {data,isLoading,error}=useQuery({
         queryKey:["games",'allgames'],
         queryFn:useFetchGames
     })
     return (
         <div className="bg-secondary">
-            <Nav/>
+            <Nav cartQuantity={cartQuantity}/>
             {isLoading && (
                 <div className="text-center">
                 <ClipLoader/>
