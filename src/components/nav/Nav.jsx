@@ -4,8 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart,faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import SearchBar from '../searchbar/SearchBar';
 
-const Nav=()=>{
-  
+const Nav=({cartQuantity,wishlistCount})=>{
     return(
         <div className={`${classes.header} py-3`}>
             <div className={`${classes['parent-container']} container`}>
@@ -20,7 +19,7 @@ const Nav=()=>{
     
 
             <div className='collapse navbar-collapse' id="navbarNav">
-            <ul className="navbar-nav ms-auto">
+            <ul className="navbar-nav ms-auto d-flex gap-2">
         <li className="nav-item">
           <Link to="/steam/store" className={`${classes.text} ${classes.item} nav-link`}>Store</Link>
         </li>
@@ -28,10 +27,16 @@ const Nav=()=>{
           <Link className={`${classes.text} ${classes.item} nav-link`} >Login</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link"><FontAwesomeIcon icon={faHeart} size="xl" style={{color: "#FFD43B",}} /></Link>
+          <div className={classes['cart-container']}>
+          <Link to="/steam/wishlist" className="nav-link"><FontAwesomeIcon icon={faHeart} size="xl" style={{color: "#FFD43B"}} /></Link>
+          {wishlistCount>0 && <p className={classes['cart-quantity']}>{wishlistCount}</p>}
+          </div>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link" ><FontAwesomeIcon icon={faCartShopping} size="xl" style={{color: "#FFD43B",}} /></Link>
+        <li className="nav-item" style={{width:'60px'}}>
+          <div className={classes['cart-container']}>
+           <Link to="/steam/cart" className="nav-link" ><FontAwesomeIcon icon={faCartShopping} size="xl" style={{color: "#FFD43B",}} /></Link> 
+           {cartQuantity>0 && <p className={classes['cart-quantity']}>{cartQuantity}</p>}
+           </div>
         </li>
       </ul>
             </div>

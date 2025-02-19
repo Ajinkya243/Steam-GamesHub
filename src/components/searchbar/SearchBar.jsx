@@ -15,17 +15,13 @@ const SearchBar=()=>{
     })
     const userInput=useDebounce(name,500);
     
-    
-    
    useEffect(()=>{
             if(userInput && data){
-                console.log('inside effect')
             const filterData=data.filter(el=>el.name.toLowerCase().includes(userInput.toLowerCase()));
-            console.log('game',filterData);
             setGame(filterData);
             setStatus(true)
             }
-            return ()=>{setGame([]);setStatus(false);}
+             return ()=>{setGame([]);setStatus(false);}
     },[userInput,data])
     return(
         <div>
