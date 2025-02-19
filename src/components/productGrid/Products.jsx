@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import StraRating from "../StarRating/StarRating";
 import classes from './Product.module.css';
+import { LiaRupeeSignSolid } from "react-icons/lia";
 const Products=({products})=>{
 
     return(
@@ -20,6 +21,7 @@ const Products=({products})=>{
                                 <div className="text-center py-3" style={{backgroundColor:"#2c2f33"}}>
                             
                             <p style={{color:"ffffff"}}>{el.name}</p>
+                            <p><LiaRupeeSignSolid/>{el.price ? el.price : "Free to Play"} </p>
                             <p>{el.rating}<StraRating stars={el.rating} /></p>
                             </div>
                             </div>

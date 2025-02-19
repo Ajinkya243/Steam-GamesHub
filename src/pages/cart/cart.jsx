@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { MdDelete } from "react-icons/md";
 import { FaHeart } from "react-icons/fa";
 
-const Cart = ({ cart, setCart, cartQuantity, setCartQuantity, wishlistCount, setWishlist, setWishlistCount }) => {
+const Cart = ({ cart, setCart, cartQuantity, setCartQuantity, wishlistCount, setWishlist,wishlist, setWishlistCount }) => {
     const [quantity, setQuantity] = useState({});
     
     const increaseQuantity = (id) => {
@@ -31,11 +31,21 @@ const Cart = ({ cart, setCart, cartQuantity, setCartQuantity, wishlistCount, set
     };
 
     const addToWishlist = (item) => {
+        const inWishlist=wishlist.find(el=>el._id===item._id);
+        if(inWishlist){
+            toast.info("Game already in wishlist");
+            const updatedCart = cart.filter(el => el._id !== item._id);
+        setCart(updatedCart);
+        setCartQuantity(prev => prev - 1);
+            return;
+        }
+        setWishlist(prev => [...prev, item]);
+        setWishlistCount(prev => prev + 1);
         const updatedCart = cart.filter(el => el._id !== item._id);
         setCart(updatedCart);
         setCartQuantity(prev => prev - 1);
-        setWishlist(prev => [...prev, item]);
-        setWishlistCount(prev => prev + 1);
+        toast.success('Game added to wishlist.');
+        
     };
 
     const totalPrice = cart.reduce((acc, cur) => {
@@ -91,6 +101,7 @@ const Cart = ({ cart, setCart, cartQuantity, setCartQuantity, wishlistCount, set
                             <p>Price: <LuIndianRupee />{totalPrice}</p>
                             <p>Delivery Charge: <LuIndianRupee />{deliveryCharge}</p>
                             <h4>Total Amount: <LuIndianRupee />{totalAmount}</h4>
+                            <button className="btn btn-primary w-100">Place Order</button>
                         </div>
                     </div>
                 }
