@@ -35,7 +35,11 @@ const ProductDetails=()=>{
     const inWishlist=wishlist.some(el=>el._id===id);
     setInCart(inCart);
     setInWishlist(inWishlist);
-   },[id,cart,wishlist]);
+    if(!login){
+        setCartQuantity(0);
+        setWishlistCount(0);
+    }
+   },[id,cart,wishlist,login]);
     return(
         <div className="bg-secondary">
         <Nav key={data?._id}/>
