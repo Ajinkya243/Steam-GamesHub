@@ -1,0 +1,21 @@
+.container{
+    position:relative;
+}
+
+.logo{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.btnEffect:hover{
+    background-color: lightblue;
+}
+.btn-active{
+    background-color: lightgreen;
+}
