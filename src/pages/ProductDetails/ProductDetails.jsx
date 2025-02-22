@@ -8,8 +8,10 @@ import { useEffect, useState } from "react";
 import { LiaRupeeSignSolid } from "react-icons/lia";
 import { Link } from "react-router-dom";
 import { toast } from 'react-toastify';
+import { useGlobalState } from "../../utils/context/GlobalStateProvider";
 
-const ProductDetails=({cartQuantity,setCartQuantity,cart,setCart,wishlistCount,setWishlistCount,wishlist,setWishlist})=>{
+const ProductDetails=()=>{
+    const{setCartQuantity,cart,setCart,setWishlistCount,wishlist,setWishlist,login}=useGlobalState();
     const[url,setUrl]=useState();
     const[inCart,setInCart]=useState(false);
     const[inWishlist,setInWishlist]=useState(false);
@@ -36,7 +38,7 @@ const ProductDetails=({cartQuantity,setCartQuantity,cart,setCart,wishlistCount,s
    },[id,cart,wishlist]);
     return(
         <div className="bg-secondary">
-        <Nav key={data?._id} cartQuantity={cartQuantity} wishlistCount={wishlistCount}/>
+        <Nav key={data?._id}/>
         {isLoading && (
             <div className="text-center">
                 <ClipLoader/>
@@ -84,9 +86,20 @@ const ProductDetails=({cartQuantity,setCartQuantity,cart,setCart,wishlistCount,s
             <div className={classes['buy-card']}>
                 <p className="display-5">Buy {data.name}</p>
                 <div className={classes['price-tag']}>
-                    <span className="bg-dark p-2"><LiaRupeeSignSolid/>{data.price?data.price:'Free to play'}</span>
-                    {inCart ?<Link to="/steam/cart" className="btn btn-success">Go to Cart</Link>:<button className="btn btn-primary" onClick={()=>handleCart()}>Add to Cart</button>}
-                    {inWishlist ?<Link to="/steam/wishlist" className="btn btn-success">Go to Wishlist</Link>:<button className="btn btn-primary" onClick={handleWishList}>Add to Wishlist</button>}
+                    <span className="bg-dark p-2 fs-5"><LiaRupeeSignSolid/>{data.price?data.price:'Free to play'}</span>
+                    {login ?(
+                        <>
+                        {inCart ?<Link to="/steam/cart" className="btn btn-success fs-5">Go to Cart</Link>:<button className="btn btn-primary fs-5" onClick={()=>handleCart()}>Add to Cart</button>}
+                        {inWishlist ?<Link to="/steam/wishlist" className="btn btn-success fs-5">Go to Wishlist</Link>:<button className="btn btn-primary fs-5" onClick={handleWishList}>Add to Wishlist</button>}
+                        </>
+                    ):(
+                        <>
+                        <Link to="/steam/login" className="btn btn-primary fs-5">Add to Cart</Link>
+                        <Link to="/steam/login" className="btn btn-primary fs-5">Add to Wishlist</Link>
+                        </>
+                    )}
+                    
+                    
                     
                     
                 </div>

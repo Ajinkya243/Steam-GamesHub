@@ -3,7 +3,10 @@ import { toast } from 'react-toastify';
 import { MdDelete } from "react-icons/md";
 import { LuIndianRupee } from "react-icons/lu";
 import { FaShoppingCart } from "react-icons/fa";
-const Wishlist=({cartQuantity,setCartQuantity,cart,setCart,wishlistCount,setWishlistCount,wishlist,setWishlist})=>{
+import { useGlobalState } from "../../utils/context/GlobalStateProvider";
+
+const Wishlist=()=>{
+    const{setCartQuantity,cart,setCart,setWishlistCount,wishlist,setWishlist,setQuantity}=useGlobalState();
     const removeFromWishlist=(id)=>{
         const filterWishlist=wishlist.filter(el=>el._id!==id);
         setWishlist(filterWishlist);
@@ -17,6 +20,7 @@ const Wishlist=({cartQuantity,setCartQuantity,cart,setCart,wishlistCount,setWish
             const filterData=wishlist.filter(el=>el._id!==item._id);
         setWishlist(filterData);
         setWishlistCount(prev=>prev-1);
+        setQuantity(prev=>({...prev,[item._id]:(prev[item._id]||1)+1}))
         return;
         }
         setCart(prev=>[...prev,item]);
@@ -31,7 +35,7 @@ const Wishlist=({cartQuantity,setCartQuantity,cart,setCart,wishlistCount,setWish
 
     return(
         <div className="bg-secondary">
-        <Nav cartQuantity={cartQuantity} wishlistCount={wishlistCount}/>
+        <Nav/>
         <div className="container py-5">
          { wishlist.length===0 &&  <p className="fs-1 text-center">Wishlist is empty.</p>}
         <div className="row g-3">

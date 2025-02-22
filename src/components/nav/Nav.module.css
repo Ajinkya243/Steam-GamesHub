@@ -27,8 +27,8 @@
   }
   .child-container{
     position: absolute;
-    top: 30%;
-    left: 30%;
+    top: 25%;
+    left: 20%;
     z-index: 999;
   }
 
@@ -50,4 +50,16 @@
     align-items: center;
     font-size: 12px;
     font-weight: bold;
+  }
+
+  @media (max-width: 768px){
+    .parent-container{
+      position: static;
+    }
+    .child-container{
+      top:5%;
+      left: 50%;
+      width: 50%;
+    z-index: 100;
+    } 
   }
