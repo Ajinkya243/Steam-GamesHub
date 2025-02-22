@@ -7,9 +7,12 @@ const UserPage=()=>{
     const navigate=useNavigate();
 
     useEffect(()=>{
-        setTimeout(()=>{
-            navigate("/steam/login")
-        },3000);
+        if(!login){
+            setTimeout(()=>{
+                navigate("/steam/login")
+            },3000);
+        }
+        
     },[login])
     return(
         <div className="bg-secondary">
