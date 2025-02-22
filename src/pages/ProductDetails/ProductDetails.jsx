@@ -51,7 +51,7 @@ const ProductDetails=()=>{
                 <hr />
             <div className="row g-3">
             <p className={`${classes.text} display-5`}>{data.name}</p>
-                <div className="col col-md-7 w-100">
+                <div className="col col-md-7">
                 
                 {data.videoUrl ? (<video autoPlay  muted loop playsInline controls width="100%" key={data._id}>
           <source
