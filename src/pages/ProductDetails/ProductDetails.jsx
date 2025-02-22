@@ -86,16 +86,16 @@ const ProductDetails=()=>{
             <div className={classes['buy-card']}>
                 <p className="display-5">Buy {data.name}</p>
                 <div className={classes['price-tag']}>
-                    <span className="bg-dark p-2 fs-5"><LiaRupeeSignSolid/>{data.price?data.price:'Free to play'}</span>
+                    <span className="bg-dark p-2"><LiaRupeeSignSolid/>{data.price?data.price:'Free to play'}</span>
                     {login ?(
                         <>
-                        {inCart ?<Link to="/steam/cart" className="btn btn-success fs-5">Go to Cart</Link>:<button className="btn btn-primary fs-5" onClick={()=>handleCart()}>Add to Cart</button>}
-                        {inWishlist ?<Link to="/steam/wishlist" className="btn btn-success fs-5">Go to Wishlist</Link>:<button className="btn btn-primary fs-5" onClick={handleWishList}>Add to Wishlist</button>}
+                        {inCart ?<Link to="/steam/cart" className="btn btn-success">Go to Cart</Link>:<button className="btn btn-primary" onClick={()=>handleCart()}>Add to Cart</button>}
+                        {inWishlist ?<Link to="/steam/wishlist" className="btn btn-success">Go to Wishlist</Link>:<button className="btn btn-primary" onClick={handleWishList}>Add to Wishlist</button>}
                         </>
                     ):(
                         <>
-                        <Link to="/steam/login" className="btn btn-primary fs-5">Add to Cart</Link>
-                        <Link to="/steam/login" className="btn btn-primary fs-5">Add to Wishlist</Link>
+                        <Link to="/steam/login" className="btn btn-primary">Add to Cart</Link>
+                        <Link to="/steam/login" className="btn btn-primary">Add to Wishlist</Link>
                         </>
                     )}
                     
