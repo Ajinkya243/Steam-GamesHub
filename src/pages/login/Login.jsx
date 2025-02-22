@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useGlobalState } from "../../utils/context/GlobalStateProvider";
 
 const Login=()=>{
+    const{setCart,setWishlist}=useGlobalState();
     const[valid,setValid]=useState(false);
     const[inValid,setInValid]=useState(false);
     const[inputUser,setInputUser]=useState({});
@@ -22,6 +23,8 @@ const Login=()=>{
             setValid(true);
             setUser(inputUser);
             setLogin(true);
+            setCart([]);
+            setWishlist([]);
             setTimeout(()=>{
                 navigate("/steam/store");
             },2000)
@@ -35,7 +38,8 @@ const Login=()=>{
         setInputUser(()=>({
             name:'John_W',
             email:'hitman@gmail.com',
-            password:'11223344'
+            password:'11223344',
+            address:'Somewhere in Hitman town.'
         }))
     }
     

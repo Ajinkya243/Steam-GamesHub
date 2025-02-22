@@ -38,7 +38,6 @@ const ProductDetails=()=>{
     if(!login){
         setCartQuantity(0);
         setWishlistCount(0);
-        setCart([]);
     }
    },[id,cart,wishlist,login]);
     return(

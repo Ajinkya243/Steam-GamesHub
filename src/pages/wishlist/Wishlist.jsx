@@ -4,9 +4,10 @@ import { MdDelete } from "react-icons/md";
 import { LuIndianRupee } from "react-icons/lu";
 import { FaShoppingCart } from "react-icons/fa";
 import { useGlobalState } from "../../utils/context/GlobalStateProvider";
+import { useEffect } from "react";
 
 const Wishlist=()=>{
-    const{setCartQuantity,cart,setCart,setWishlistCount,wishlist,setWishlist,setQuantity}=useGlobalState();
+    const{setCartQuantity,cart,setCart,setWishlistCount,wishlist,setWishlist,setQuantity,login}=useGlobalState();
     const removeFromWishlist=(id)=>{
         const filterWishlist=wishlist.filter(el=>el._id!==id);
         setWishlist(filterWishlist);
@@ -31,6 +32,15 @@ const Wishlist=()=>{
         toast.success("Game added to cart.");
         
     }
+
+    useEffect(()=>{
+if(!login){
+    setCart([]);
+    setWishlist([]);
+    setCartQuantity(0);
+    setWishlistCount(0);
+}
+    },[login])
     
 
     return(
