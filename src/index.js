@@ -9,9 +9,12 @@ import PublisherGrid from './components/publisher/PublisherGrid';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
 import Store from './pages/Store/Store';
 import { ToastContainer } from 'react-toastify';
-import { useState } from 'react';
 import Cart from './pages/cart/cart';
 import Wishlist from './pages/wishlist/Wishlist';
+import Login from './pages/login/Login';
+import UserPage from './pages/user/UserPage';
+import Register from './pages/register/Register';
+import GlobalStateProvider from './utils/context/GlobalStateProvider';
 
 const queryClient=new QueryClient({
   defaultOptions:{
@@ -23,18 +26,17 @@ const queryClient=new QueryClient({
 })
 
 const AppWrapper=()=>{
-  const[cartQuantity,setCartQuantity]=useState(0);
-  const[cart,setCart]=useState([]);
-  const[wishlistCount,setWishlistCount]=useState(0);
-  const[wishlist,setWishlist]=useState([]);
   return(
     <Routes>
-    <Route path="/" element={<App cartQuantity={cartQuantity} wishlistCount={wishlistCount}/>} />
+    <Route path="/" element={<App/>} />
     <Route path="/steam/publisher/:publisher" element={<PublisherGrid />}/>
-    <Route path="/steam/product/:id" element={<ProductDetails cartQuantity={cartQuantity} setCartQuantity={setCartQuantity} cart={cart} setCart={setCart} wishlistCount={wishlistCount} setWishlistCount={setWishlistCount} wishlist={wishlist} setWishlist={setWishlist}/>} />
-    <Route path='/steam/store' element={<Store wishlistCount={wishlistCount} cartQuantity={cartQuantity}/>}/>
-    <Route path="/steam/cart" element={<Cart cart={cart} setCart={setCart} cartQuantity={cartQuantity} setCartQuantity={setCartQuantity} setWishlist={setWishlist} wishlistCount={wishlistCount} setWishlistCount={setWishlistCount}/>} />
-    <Route path="/steam/wishlist" element={<Wishlist cartQuantity={cartQuantity} setCartQuantity={setCartQuantity} cart={cart} setCart={setCart} wishlistCount={wishlistCount} setWishlistCount={setWishlistCount} wishlist={wishlist} setWishlist={setWishlist}/>} />
+    <Route path="/steam/product/:id" element={<ProductDetails/>}/>
+    <Route path="/steam/store" element={<Store/>}/>
+    <Route path="/steam/cart" element={<Cart/>}/>
+    <Route path="/steam/wishlist" element={<Wishlist/>}/>
+    <Route path="/steam/login" element={<Login/>}/>
+    <Route path="/steam/user" element={<UserPage/>}/>
+    <Route path="/steam/register" element={<Register/>}/>
   </Routes>
   )
 }
@@ -44,7 +46,9 @@ root.render(
   <StrictMode>
   <BrowserRouter>
   <QueryClientProvider client={queryClient}>
-  <AppWrapper/>
+    <GlobalStateProvider>
+    <AppWrapper/>
+    </GlobalStateProvider>
   </QueryClientProvider>
   </BrowserRouter>
   <ToastContainer/>

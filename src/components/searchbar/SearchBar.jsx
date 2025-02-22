@@ -17,7 +17,7 @@ const SearchBar=()=>{
     
    useEffect(()=>{
             if(userInput && data){
-            const filterData=data.filter(el=>el.name.toLowerCase().includes(userInput.toLowerCase()));
+            const filterData=data.filter(el=>el.name.toLowerCase().includes(userInput.trim().toLowerCase()));
             setGame(filterData);
             setStatus(true)
             }

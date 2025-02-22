@@ -1,10 +1,14 @@
 import {Link} from 'react-router-dom'
 import classes from './Nav.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart,faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faHeart,faCartShopping, faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import SearchBar from '../searchbar/SearchBar';
-
-const Nav=({cartQuantity,wishlistCount})=>{
+import { useGlobalState } from '../../utils/context/GlobalStateProvider';
+const Nav=()=>{
+  const{cartQuantity,wishlistCount,login,user,setLogin}=useGlobalState();
+  const handleLogin=()=>{
+    setLogin(prev=>!prev);
+  }
     return(
         <div className={`${classes.header} py-3`}>
             <div className={`${classes['parent-container']} container`}>
@@ -24,7 +28,7 @@ const Nav=({cartQuantity,wishlistCount})=>{
           <Link to="/steam/store" className={`${classes.text} ${classes.item} nav-link`}>Store</Link>
         </li>
         <li className="nav-item">
-          <Link className={`${classes.text} ${classes.item} nav-link`} >Login</Link>
+          {login ? <Link to="/steam/user" className={`${classes.text} ${classes.item} nav-link`} >{user.name}<FontAwesomeIcon icon={faUser} size='xl' style={{color: "#FFD43B",}} /></Link>: <Link to="/steam/login" className={`${classes.text} ${classes.item} nav-link`} ><FontAwesomeIcon icon={faUser} size='xl' style={{color: "#FFD43B",}} /></Link> }
         </li>
         <li className="nav-item">
           <div className={classes['cart-container']}>
@@ -38,6 +42,9 @@ const Nav=({cartQuantity,wishlistCount})=>{
            {cartQuantity>0 && <p className={classes['cart-quantity']}>{cartQuantity}</p>}
            </div>
         </li>
+       {login && <li className='nav-link'>
+        <button style={{backgroundColor:'#2e3136'}} onClick={handleLogin}><FontAwesomeIcon icon={faRightFromBracket} size='xl' style={{color: "#FFD43B",}} /></button>
+        </li>}
       </ul>
             </div>
         </nav>
@@ -45,6 +52,7 @@ const Nav=({cartQuantity,wishlistCount})=>{
           <SearchBar/>
         </div>
         </div>
+        
         </div>
     )
 
