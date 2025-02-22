@@ -34,7 +34,6 @@ const ProductDetails=({cartQuantity,setCartQuantity,cart,setCart,wishlistCount,s
     setInCart(inCart);
     setInWishlist(inWishlist);
    },[id,cart,wishlist]);
-   console.log(cart);
     return(
         <div className="bg-secondary">
         <Nav key={data?._id} cartQuantity={cartQuantity} wishlistCount={wishlistCount}/>
@@ -86,8 +85,8 @@ const ProductDetails=({cartQuantity,setCartQuantity,cart,setCart,wishlistCount,s
                 <p className="display-5">Buy {data.name}</p>
                 <div className={classes['price-tag']}>
                     <span className="bg-dark p-2"><LiaRupeeSignSolid/>{data.price?data.price:'Free to play'}</span>
-                    {inCart ?<Link className="btn btn-success">Go to Cart</Link>:<button className="btn btn-success" onClick={()=>handleCart()}>Add to Cart</button>}
-                    {inWishlist ?<Link className="btn btn-success">Go to Wishlist</Link>:<button className="btn btn-success" onClick={handleWishList}>Add to Wishlist</button>}
+                    {inCart ?<Link to="/steam/cart" className="btn btn-success">Go to Cart</Link>:<button className="btn btn-primary" onClick={()=>handleCart()}>Add to Cart</button>}
+                    {inWishlist ?<Link to="/steam/wishlist" className="btn btn-success">Go to Wishlist</Link>:<button className="btn btn-primary" onClick={handleWishList}>Add to Wishlist</button>}
                     
                     
                 </div>

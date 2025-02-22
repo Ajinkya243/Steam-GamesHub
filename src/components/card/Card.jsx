@@ -4,7 +4,7 @@ const Card=()=>{
     return(
         <div className="row g-3">
             {urls.map(el=>(
-                <div className='col col-md-3 col-6 col-sm-3'>
+                <div className='col col-md-3 col-12 col-sm-3'>
                 <div className="card h-100">
                     <img src={el.url} className="card-img-top" alt="logo" />
                     <div className="card-body">

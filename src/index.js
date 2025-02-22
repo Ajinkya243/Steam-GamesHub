@@ -10,6 +10,8 @@ import ProductDetails from './pages/ProductDetails/ProductDetails';
 import Store from './pages/Store/Store';
 import { ToastContainer } from 'react-toastify';
 import { useState } from 'react';
+import Cart from './pages/cart/cart';
+import Wishlist from './pages/wishlist/Wishlist';
 
 const queryClient=new QueryClient({
   defaultOptions:{
@@ -30,7 +32,9 @@ const AppWrapper=()=>{
     <Route path="/" element={<App cartQuantity={cartQuantity} wishlistCount={wishlistCount}/>} />
     <Route path="/steam/publisher/:publisher" element={<PublisherGrid />}/>
     <Route path="/steam/product/:id" element={<ProductDetails cartQuantity={cartQuantity} setCartQuantity={setCartQuantity} cart={cart} setCart={setCart} wishlistCount={wishlistCount} setWishlistCount={setWishlistCount} wishlist={wishlist} setWishlist={setWishlist}/>} />
-    <Route path='/steam/store' element={<Store cartQuantity={cartQuantity}/>}/>
+    <Route path='/steam/store' element={<Store wishlistCount={wishlistCount} cartQuantity={cartQuantity}/>}/>
+    <Route path="/steam/cart" element={<Cart cart={cart} setCart={setCart} cartQuantity={cartQuantity} setCartQuantity={setCartQuantity} setWishlist={setWishlist} wishlistCount={wishlistCount} setWishlistCount={setWishlistCount}/>} />
+    <Route path="/steam/wishlist" element={<Wishlist cartQuantity={cartQuantity} setCartQuantity={setCartQuantity} cart={cart} setCart={setCart} wishlistCount={wishlistCount} setWishlistCount={setWishlistCount} wishlist={wishlist} setWishlist={setWishlist}/>} />
   </Routes>
   )
 }
