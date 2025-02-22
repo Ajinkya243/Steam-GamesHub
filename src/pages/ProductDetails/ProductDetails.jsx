@@ -51,7 +51,7 @@ const ProductDetails=()=>{
                 <hr />
             <div className="row g-3">
             <p className={`${classes.text} display-5`}>{data.name}</p>
-                <div className="col col-md-7">
+                <div className="col col-md-7 w-100">
                 
                 {data.videoUrl ? (<video autoPlay  muted loop playsInline controls width="100%" key={data._id}>
           <source
@@ -60,7 +60,7 @@ const ProductDetails=()=>{
           />
         </video>):(<img width={'100%'} src={data.screenShots[0]} alt="sample pic" />)}
         <h3 className="text-light">Popular user-defined tags for this product:</h3>
-        <div className="d-flex gap-3">
+        <div className="d-flex gap-3 flex-wrap">
         {data.tags.map(el=>(
             <p className={classes['user-tags']}>{el}</p>
         ))}
