@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 import classes from './Nav.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart,faCartShopping, faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faHeart,faCartShopping, faUser, faRightFromBracket , faClockRotateLeft} from '@fortawesome/free-solid-svg-icons';
 import SearchBar from '../searchbar/SearchBar';
 import { useGlobalState } from '../../utils/context/GlobalStateProvider';
 const Nav=()=>{
@@ -42,8 +42,11 @@ const Nav=()=>{
            {cartQuantity>0 && <p className={classes['cart-quantity']}>{cartQuantity}</p>}
            </div>
         </li>
+        <li className="nav-item">
+          <Link to="/steam/history" className={`${classes.text} ${classes.item} nav-link`}><FontAwesomeIcon icon={faClockRotateLeft} size="xl" style={{color: "#FFD43B",}} /></Link>
+        </li>
        {login && <li className='nav-link'>
-        <button style={{backgroundColor:'#2e3136'}} onClick={handleLogin}><FontAwesomeIcon icon={faRightFromBracket} size='xl' style={{color: "#FFD43B",}} /></button>
+        <button onClick={handleLogin}><FontAwesomeIcon icon={faRightFromBracket} size='xl' style={{color: "#FFD43B",}} /></button>
         </li>}
       </ul>
             </div>

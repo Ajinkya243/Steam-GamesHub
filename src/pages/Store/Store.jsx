@@ -12,7 +12,7 @@ const Store=()=>{
         queryFn:useFetchGames
     })
     return (
-        <div className="bg-secondary">
+        <div>
             <Nav />
             <div className="row ms-4">
                 <div className="col col-md-3 py-5">

@@ -20,7 +20,7 @@ const Register=()=>{
         <div className="bg-secondary">
             <Nav/>
             <div className="text-center fs-3">
-            {login && <p className="text-light">Login Successfully.</p>}
+            {login && <p>Login Successfully.</p>}
           <form onSubmit={handleForm}>
             <label htmlFor="inputName">Name:</label> <br />
             <input type="text" id="inputName" name="name" onChange={handleChange} required/><br />

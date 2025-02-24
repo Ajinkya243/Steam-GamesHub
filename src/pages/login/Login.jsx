@@ -44,10 +44,10 @@ const Login=()=>{
     }
     
     return(
-        <div className="bg-secondary">
+        <div >
         <Nav/>
-        <div className="text-center fs-3 py-5">
-        {valid&& <p className="text-light fs-3">Welcome Back {user.name}</p>}
+        <div className="text-center fs-3 py-5 w-50 ms-auto me-auto mt-5 shadow-lg">
+        {valid&& <p className="fs-3">Welcome Back {user.name}</p>}
         {inValid && <p className="text-danger fs-3 ">Invalid User</p>}
         <form onSubmit={handleLogin}>
             <div>

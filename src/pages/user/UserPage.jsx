@@ -15,17 +15,19 @@ const UserPage=()=>{
         
     },[login])
     return(
-        <div className="bg-secondary">
+        <div>
         <Nav/>
-        {login?<div className="col-md-6 ms-auto me-auto">
-            <div className="card">
+        <div className="py-5 d-flex flex-column align-items-center">
+        {login?
+            <div className="card shadow-lg w-20">
                 <div className="card-body text-center fs-3">
                     <p>User Details</p>
                     <p><strong>Name</strong>: {user.name}</p>
                     <p><strong>Email</strong>: {user.email}</p>
                 </div>
             </div>
-        </div>:<p className="text-center fs-3 text-light">Logout Successfully</p>}
+        :<p className="text-center fs-3">Logout Successfully</p>}
+        </div>
         </div>
     )
 }

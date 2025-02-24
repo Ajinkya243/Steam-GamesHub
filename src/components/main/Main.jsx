@@ -21,8 +21,8 @@ const Main=()=>{
         </div>
         <br />
         <br />
-        <h2 className="display-4 text-primary">Top Pulisher's &rarr; </h2>
         <div className='container'>
+        <h2 className="display-4 text-primary">Top Pulisher's &rarr; </h2>
          <Card/> 
          </div>
         </div>
