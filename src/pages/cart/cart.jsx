@@ -172,7 +172,7 @@ const Cart = () => {
                                 </div>
                             ))}
                         </div>
-                        <div className="col-md-4 rounded-3 p-3 fs-4 shadow-lg">
+                        <div className="col-md-4 rounded-3 p-3 fs-4 shadow-lg h-25">
                             <h3>Price Details</h3>
                             <hr />
                             <p>Price: <LuIndianRupee />{totalPrice}</p>
