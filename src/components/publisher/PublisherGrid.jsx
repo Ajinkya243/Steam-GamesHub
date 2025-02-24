@@ -13,14 +13,14 @@ const PublisherGrid=()=>{
         queryFn:useFetch
     })
     return(
-        <div className="bg-secondary">
+        <div>
             <Nav/>
             {isLoading && (
                 <div className="text-center">
             <ClipLoader/>
             </div> )}
             {error && <p className="text-center">Error occur while loading.</p>} 
-            {data && <div>
+            {data && <div className="shadow-lg">
                 
                 <Products products={data} /> 
             </div>
