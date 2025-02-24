@@ -8,7 +8,7 @@ const History=()=>{
         <div>
             <Nav />
             {!login && <p className="text-center fs-3 py-5">Login to see your orders</p>}
-            {login && <div className="container py-5">
+            {login && <div className="container py-5 shadow-lg mt-4">
                 <h2 className="text-center">My Orders</h2>
 
                 {user.orders && user.orders.length > 0 ? (
