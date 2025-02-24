@@ -44,7 +44,7 @@ if(!login){
     
 
     return(
-        <div className="bg-secondary">
+        <div>
         <Nav/>
         <div className="container py-5">
          { wishlist.length===0 &&  <p className="fs-1 text-center">Wishlist is empty.</p>}

@@ -15,6 +15,7 @@ import Login from './pages/login/Login';
 import UserPage from './pages/user/UserPage';
 import Register from './pages/register/Register';
 import GlobalStateProvider from './utils/context/GlobalStateProvider';
+import History from './pages/history/History'
 
 const queryClient=new QueryClient({
   defaultOptions:{
@@ -37,6 +38,7 @@ const AppWrapper=()=>{
     <Route path="/steam/login" element={<Login/>}/>
     <Route path="/steam/user" element={<UserPage/>}/>
     <Route path="/steam/register" element={<Register/>}/>
+    <Route path="/steam/history" element={<History/>}/>
   </Routes>
   )
 }

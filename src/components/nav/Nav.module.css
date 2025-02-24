@@ -27,6 +27,7 @@
   }
   .child-container{
     position: absolute;
+    width: 40%;
     top: 25%;
     left: 20%;
     z-index: 999;

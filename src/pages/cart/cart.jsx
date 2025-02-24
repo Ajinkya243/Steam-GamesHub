@@ -67,6 +67,21 @@ const Cart = () => {
     const totalAmount = totalPrice + deliveryCharge;
 
     const handlePayment=()=>{
+        toast.success('Order placed Successfully.');
+        setCart([]);
+        setCartQuantity(0);
+        setQuantity({});
+        const orderDetails = {
+            items:cart.map(item => ({
+                ...item,
+                quantity: quantity[item._id] || 1
+            })),
+            totalPrice: totalAmount,
+            address: address,
+            date: new Date().toLocaleString(),
+            status: "Confirmed"
+        };
+        user.orders=[...(user.orders||[]),orderDetails]
         const options = {
             key: 'rzp_test_9lUQQiaP8SrWDV',
             amount: totalAmount*100, 
@@ -105,7 +120,7 @@ const Cart = () => {
     
 
     return (
-        <div className="bg-light">
+        <div>
             <Nav/>
             <div className="container py-5">
                 {cart.length === 0 ? 
