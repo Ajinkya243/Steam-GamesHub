@@ -55,7 +55,7 @@ const Aside=({data,setGames})=>{
             </div>
             <hr />
             <div>
-                <p className="fs-2">Category:</p>
+                <p className="fs-2 mb-0">Category:</p>
                 <input type="checkbox" value="Adventure" checked={category.includes('Adventure')} onChange={handleCategory} /> <span className="fs-5">Adventure</span><br />
                 <input type="checkbox" value="Action" checked={category.includes("Action")} onChange={handleCategory} /> <span className="fs-5">Action</span><br />
 
@@ -67,14 +67,14 @@ const Aside=({data,setGames})=>{
             </div>
             <hr />
             <div>
-                <p className="fs-2">Rating</p>
+                <p className="fs-2 mb-0">Rating</p>
                 <input type="radio" name="rating" value="Very Positive" checked={rating==='Very Positive'} onChange={handleRating}/><span className="fs-5">Very Positive</span> <br />
                 <input type="radio" name="rating" value="Positive" checked={rating==='Positive'} onChange={handleRating} /><span className="fs-5">Positive</span> <br />
                 <input type="radio" name="rating" value="Mixed" checked={rating==='Mixed'} onChange={handleRating} /><span className="fs-5">Mixed</span>
             </div>
             <hr />
             <div>
-                <p className="fs-2">Sort by price:</p>
+                <p className="fs-2 mb-0">Sort by price:</p>
                 <input type="radio" value="low" name="price" onChange={handlePrice} checked={priceSort==='low'}  /><span className="fs-5">Low to High</span> <br />
                 <input type="radio" value="high" name="price" onChange={handlePrice} checked={priceSort==='high'}  /><span className="fs-5">High to Low</span> <br />
                 <input type="radio" value="free" name="price" onChange={handlePrice} checked={priceSort==='free'} /> <span className="fs-5">Free to Play</span>

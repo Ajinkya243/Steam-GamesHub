@@ -21,7 +21,7 @@ const Pagination=({games})=>{
          {currentGames.map(el=>(
                     <div className="col col-md-4 col-sm-6 col-12">
                         <div className="card h-100 ">
-                            <Link to={`/steam/product/${el._id}`}>
+                            <Link to={`/steam/product/${el._id}`} className="text-decoration-none text-white">
                             <div className={classes.container}>
                             <img className="img-fluid" src={el.thumbnail} alt="logo" />
                             <div className={classes.logo} >
@@ -33,7 +33,7 @@ const Pagination=({games})=>{
                             
                             <p style={{color:"ffffff"}}>{el.name}</p>
                             <p><LiaRupeeSignSolid/>{el.price ? el.price : "Free to Play"} </p>
-                            <p>{el.rating}<StraRating stars={el.rating} /></p>
+                            <p>{el.rating} <StraRating stars={el.rating} /></p>
                             </div>
                             </div>
                             </Link>

@@ -51,12 +51,12 @@ if(!login){
         <div className="row g-3">
         {wishlist.map(el=>(
             <div className="col col-md-4 col-sm-6">
-            <div className="card h-100">
+            <div className="card h-100 d-flex  flex-column">
                 <img className="img-fluid" src={el.thumbnail} alt="" />
-                <div className="card-body fs-3">
+                <div className="card-body fs-3 d-flex flex-column flex-grow">
                 <p>{el.name}</p>
                 <p><LuIndianRupee/>{el.price}</p>
-                <div className="d-flex justify-content-between">
+                <div className="d-flex justify-content-between mt-auto">
                 <button className="btn btn-outline-danger" onClick={() => removeFromWishlist(el._id)}>
                 <MdDelete /> Remove
                 </button>
