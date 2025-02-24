@@ -46,7 +46,7 @@ const Nav=()=>{
           <Link to="/steam/history" className={`${classes.text} ${classes.item} nav-link`}><FontAwesomeIcon icon={faClockRotateLeft} size="xl" style={{color: "#FFD43B",}} /></Link>
         </li>
        {login && <li className='nav-link'>
-        <button onClick={handleLogin}><FontAwesomeIcon icon={faRightFromBracket} size='xl' style={{color: "#FFD43B",}} /></button>
+        <button style={{backgroundColor:'#2e3136',border:'none'}} onClick={handleLogin}><FontAwesomeIcon icon={faRightFromBracket} size='xl' style={{color: "#FFD43B",}} /></button>
         </li>}
       </ul>
             </div>

@@ -41,7 +41,7 @@ const ProductDetails=()=>{
     }
    },[id,cart,wishlist,login]);
     return(
-        <div className="bg-secondary">
+        <div>
         <Nav key={data?._id}/>
         {isLoading && (
             <div className="text-center">
@@ -50,6 +50,7 @@ const ProductDetails=()=>{
         ) }
         {error && <p>Error occur while fetching data</p>}
         {data && (
+            <div className="bg-secondary">
             <div className="container py-5">
                 <p className={`${classes.title} display-3`} ><img className={`${classes.img}`} src={data.companyLogo} alt="" /> {data.publisher}</p>
                 <hr />
@@ -118,6 +119,7 @@ const ProductDetails=()=>{
             </div>
             </div>
             
+            </div>
             </div>
         )}
 

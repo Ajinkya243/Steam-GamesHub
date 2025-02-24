@@ -141,7 +141,7 @@ const Cart = () => {
                     <div className="row">
                         <div className="col-md-8">
                             {cart.map(el => (
-                                <div key={el._id} className="d-flex align-items-center border rounded-3 mb-3 p-3">
+                                <div key={el._id} className="d-flex align-items-center border rounded-3 mb-3 p-3 shadow-lg">
                                     <div className="col-md-3">
                                         <img className="img-fluid rounded" src={el.thumbnail} alt="product" />
                                     </div>
@@ -172,7 +172,7 @@ const Cart = () => {
                                 </div>
                             ))}
                         </div>
-                        <div className="col-md-4 border border-success-subtle rounded-3 p-3 fs-4">
+                        <div className="col-md-4 rounded-3 p-3 fs-4 shadow-lg">
                             <h3>Price Details</h3>
                             <hr />
                             <p>Price: <LuIndianRupee />{totalPrice}</p>
