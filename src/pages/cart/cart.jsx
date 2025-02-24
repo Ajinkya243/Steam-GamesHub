@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { useGlobalState } from "../../utils/context/GlobalStateProvider";
 import { FaRegEdit } from "react-icons/fa";
 import { CiSaveUp2 } from "react-icons/ci";
+import { Modal, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 
 const Cart = () => {
@@ -16,6 +18,8 @@ const Cart = () => {
     const navigate=useNavigate();
     const[address,setAddress]=useState(user.address);
     const[edit,setEdit]=useState(false);
+    const [show, setShow] = useState(false);
+    const [paymentId, setPaymentId] = useState("");
     const increaseQuantity = (id) => {
         setQuantity(prev => ({
             ...prev, [id]: (prev[id] || 1) + 1
@@ -67,21 +71,7 @@ const Cart = () => {
     const totalAmount = totalPrice + deliveryCharge;
 
     const handlePayment=()=>{
-        toast.success('Order placed Successfully.');
-        setCart([]);
-        setCartQuantity(0);
-        setQuantity({});
-        const orderDetails = {
-            items:cart.map(item => ({
-                ...item,
-                quantity: quantity[item._id] || 1
-            })),
-            totalPrice: totalAmount,
-            address: address,
-            date: new Date().toLocaleString(),
-            status: "Confirmed"
-        };
-        user.orders=[...(user.orders||[]),orderDetails]
+        
         const options = {
             key: 'rzp_test_9lUQQiaP8SrWDV',
             amount: totalAmount*100, 
@@ -90,7 +80,7 @@ const Cart = () => {
             description: 'Test Transaction',
             image: 'https://your-logo-url.com/logo.png',
             handler: function (response) {
-              alert('Payment Successful! Payment ID: ' + response.razorpay_payment_id);
+                handleShow(response.razorpay_payment_id);
             },
             prefill: {
               name: 'John Wick',
@@ -104,6 +94,26 @@ const Cart = () => {
       
           const rzp1 = new window.Razorpay(options);
           rzp1.open();
+        };
+        const handleClose = () => setShow(false);
+        const handleShow = (id) => {
+        toast.success('Order placed Successfully.');
+        setCart([]);
+        setCartQuantity(0);
+        setQuantity({});
+        setPaymentId(id);
+        setShow(true);
+        const orderDetails = {
+            items:cart.map(item => ({
+                ...item,
+                quantity: quantity[item._id] || 1
+            })),
+            totalPrice: totalAmount,
+            address: address,
+            date: new Date().toLocaleString(),
+            status: "Confirmed"
+        };
+        user.orders=[...(user.orders||[]),orderDetails]
         };
 
         useEffect(()=>{
@@ -123,8 +133,11 @@ const Cart = () => {
         <div>
             <Nav/>
             <div className="container py-5">
-                {cart.length === 0 ? 
-                    <p className="text-center fs-1">Your Cart is Empty</p> : 
+                {cart.length === 0 ? (
+                    <div className="text-center">
+                    <p className="fs-1">Your Cart is Empty</p>
+                    <Link to="/steam/store" className="btn btn-primary">Continue Shopping &rarr;</Link>
+                    </div>) : 
                     <div className="row">
                         <div className="col-md-8">
                             {cart.map(el => (
@@ -173,6 +186,20 @@ const Cart = () => {
                     </div>
                 }
             </div>
+            <Modal show={show} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Payment Successful</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Your payment was successful! 🎉 <br />
+          <strong>Payment ID:</strong> {paymentId}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button className="btn btn-primary" onClick={handleClose}>
+            OK
+          </Button>
+        </Modal.Footer>
+      </Modal>
         </div>
     );
 };
