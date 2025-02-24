@@ -5,6 +5,7 @@ import { LuIndianRupee } from "react-icons/lu";
 import { FaShoppingCart } from "react-icons/fa";
 import { useGlobalState } from "../../utils/context/GlobalStateProvider";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Wishlist=()=>{
     const{setCartQuantity,cart,setCart,setWishlistCount,wishlist,setWishlist,setQuantity,login}=useGlobalState();
@@ -47,7 +48,10 @@ if(!login){
         <div>
         <Nav/>
         <div className="container py-5">
-         { wishlist.length===0 &&  <p className="fs-1 text-center">Wishlist is empty.</p>}
+         { wishlist.length===0 &&  <div className="text-center">
+                    <p className="fs-1">Your Wishlist is Empty</p>
+                    <Link to="/steam/store" className="btn btn-primary">Continue Shopping &rarr;</Link>
+                    </div>}
         <div className="row g-3">
         {wishlist.map(el=>(
             <div className="col col-md-4 col-sm-6">
