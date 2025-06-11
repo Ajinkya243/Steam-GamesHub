@@ -102,11 +102,7 @@ const ProductDetails=()=>{
                         <Link to="/steam/login" className="btn btn-primary">Add to Cart</Link>
                         <Link to="/steam/login" className="btn btn-primary">Add to Wishlist</Link>
                         </>
-                    )}
-                    
-                    
-                    
-                    
+                    )}       
                 </div>
             </div>
             <br />
