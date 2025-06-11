@@ -42,3 +42,15 @@ Backend repository - https://github.com/Ajinkya243/Steam-GamesHub-Backend
 - CORS, dotenv
 
 ---
+
+![image](https://github.com/user-attachments/assets/76aaadb8-7774-4c06-a4d2-404061608055)
+
+![image](https://github.com/user-attachments/assets/978919aa-ca2f-49e9-8fce-d82cd4b3470e)
+
+![image](https://github.com/user-attachments/assets/fd586a26-3237-4585-a3fd-062aeee300fa)
+
+![image](https://github.com/user-attachments/assets/2f3b689f-cf67-4a4d-9aef-85766c409e62)
+
+
+
+
